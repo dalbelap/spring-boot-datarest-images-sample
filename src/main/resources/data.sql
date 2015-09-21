@@ -7,10 +7,10 @@ INSERT INTO user_profile(id, email, encrypted_password, first_name, last_name, r
 insert into user_profile(id, email, encrypted_password, first_name, last_name, role, enabled, created, version) VALUES(24, 'jfernandez@localhost', 'ab4572cf32523f234a', 'Jose', 'Fernandez', 0, 1, now(), 0);
 insert into user_profile(id, email, encrypted_password, first_name, last_name, role, enabled, created, version) VALUES(25, 'cmaragallo@localhost', 'ab4572cf32523f234a', 'Carlos', 'Maragallo', 0, 1, now(), 0);
 
-insert into picture(id, user_profile_id, uuid_file, original_file, picture_title, picture_description, file_size, created, version) values(20, 23, '1238971823749123401', 'onepicture.png', 'One Picture', 'descripcion', 12312, now(), 0);
-insert into picture(id, user_profile_id, uuid_file, original_file, picture_title, picture_description, file_size, created, version) values(21, 24, '2238971823749123402', 'two_picture.png', 'Two Picture', 'descripcion', 12312, now(), 0);
-insert into picture(id, user_profile_id, uuid_file, original_file, picture_title, picture_description, file_size, created, version) values(22, 23, '3238971823749123403', 'three_picture.png', 'Three Picture', 'descripcion', 12312, now(), 0);
-insert into picture(id, user_profile_id, uuid_file, original_file, picture_title, picture_description, file_size, created, version) values(23, 25, '4238971823749123404', 'four_picture.png', 'Four Picture', 'descripcion', 12312, now(), 0);
+insert into picture(id, user_profile_id, picture_file, original_file_name, picture_title, picture_description, file_size, created, version) values(20, 23, 0xffff, 'onepicture.png', 'One Picture', 'descripcion', 12312, now(), 0);
+insert into picture(id, user_profile_id, picture_file, original_file_name, picture_title, picture_description, file_size, created, version) values(21, 24, 0xffff, 'two_picture.png', 'Two Picture', 'descripcion', 12312, now(), 0);
+insert into picture(id, user_profile_id, picture_file, original_file_name, picture_title, picture_description, file_size, created, version) values(22, 23, 0xffff, 'three_picture.png', 'Three Picture', 'descripcion', 12312, now(), 0);
+insert into picture(id, user_profile_id, picture_file, original_file_name, picture_title, picture_description, file_size, created, version) values(23, 25, 0xffff, 'four_picture.png', 'Four Picture', 'descripcion', 12312, now(), 0);
 
 insert into comment(user_profile_id, picture_id, comment_text, created) VALUES(23, 21, 'OMG, wonderful', now());
 insert into comment(user_profile_id, picture_id, comment_text, created) VALUES(23, 23, 'Fantastic :)', now());

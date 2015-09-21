@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      generate-ddl: true
+      ddl-auto: create-drop
+
+  batch:
+    initializer:
+      enabled: true

@@ -1,25 +1,16 @@
 package restful.domain;
 
+import lombok.Data;
+
+import javax.annotation.concurrent.Immutable;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.annotation.concurrent.Immutable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
 @Entity
 @Immutable
-@EnableAutoConfiguration
+@Data
 public class Tag {
 	@Id
 	@GeneratedValue
@@ -29,7 +20,7 @@ public class Tag {
 	@JoinTable(name = "picture_tags", 
 		joinColumns = @JoinColumn(name = "tag_id"), 
 		inverseJoinColumns = @JoinColumn(name = "picture_id"))
-	private Set<Picture> picturesList = new HashSet<Picture>();
+	private Set<Picture> picturesList = new HashSet<>();
 
 	@Column(nullable = false, length = 63)
 	private String tagName;
@@ -38,51 +29,28 @@ public class Tag {
 	@Column(nullable = false)
 	private Date created;
 
+	/**
+	 * <construct>Created a tag name with name and date time</construct>
+	 */
 	public Tag() {
-	}
-
-	public Tag(String tagName) {
 		super();
-		this.tagName = tagName;
+
+
+		/* tag date time */
 		this.created = new Date();
 	}
 
-	public Long getId() {
-		return id;
-	}
+	/**
+	 * <construct>Creates a tag name with name and date time</construct>
+	 * @param tagName
+	 */
+	public Tag(String tagName) {
+		super();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Set<Picture> getPicturesList() {
-		return picturesList;
-	}
-
-	public void setPicturesList(Set<Picture> picturesList) {
-		this.picturesList = picturesList;
-	}
-
-	public String getTagName() {
-		return tagName;
-	}
-
-	public void setTagName(String tagName) {
 		this.tagName = tagName;
-	}
 
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	@Override
-	public String toString() {
-		return "Tag [id=" + id + ", tagName=" + tagName + ", created="
-				+ created + "]";
+		/* tag date time */
+		this.created = new Date();
 	}
 
 }

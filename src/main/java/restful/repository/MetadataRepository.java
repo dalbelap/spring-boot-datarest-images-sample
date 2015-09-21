@@ -1,9 +1,11 @@
-package restful.domain;
-
-import java.util.Collection;
+package restful.repository;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import restful.domain.Metadata;
+import restful.domain.Picture;
+
+import java.util.Collection;
 
 /**
  * Creates a wallet JPA repository with basic actions

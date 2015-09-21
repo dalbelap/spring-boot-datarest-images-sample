@@ -6,19 +6,16 @@ This is a Spring Boot sample using data jpa and data rest to generate a RESTful 
 Install
 -------
 
-require 'MySQL 5.5, Java 8 and Maven 3.2'
+required 'Java 8 and Maven 3.3'
 
 Run
 ---
 
 $ mvn spring-boot:run
-
-go to http://localhost:800
+$ curl -H http://localhost:8080
 
 License
 -------
-
-Copyright 2015 D. Albela
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

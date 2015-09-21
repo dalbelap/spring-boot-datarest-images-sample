@@ -1,7 +1,8 @@
-package restful.domain;
+package restful.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import restful.domain.UserProfile;
 
 /**
  * Creates a wallet JPA repository with basic actions

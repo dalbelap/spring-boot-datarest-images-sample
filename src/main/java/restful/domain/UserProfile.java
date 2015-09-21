@@ -1,21 +1,13 @@
 package restful.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
-
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
 @Entity
-@EnableAutoConfiguration
+@Data
 public class UserProfile {
 
 	/**
@@ -24,7 +16,6 @@ public class UserProfile {
 	 */
 	public enum Role {
 		CUSTOMER, PREMIUM, ENTERPRISE;
-
 	}
 	
 	@Id
@@ -33,12 +24,13 @@ public class UserProfile {
 
 	@Column(nullable = false)
 	@Enumerated(EnumType.ORDINAL)
-	private Role role;
+	private Role role = Role.CUSTOMER;
 
 	@Column(unique = true, nullable = false)
 	private String email;
 
 	@Column(nullable = false, length = 60)
+	@JsonIgnore
 	private String encryptedPassword;
 
 	@Column(nullable = false, length = 31)
@@ -63,7 +55,7 @@ public class UserProfile {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
-	private Date created;
+	private Date created = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modified;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -74,178 +66,21 @@ public class UserProfile {
 	@Version
 	private long version;
 
-	public UserProfile() {
-	}
 
-	public UserProfile(String email, String encryptedPassword,
-			String firstName, String lastName) {
+    public UserProfile(){
+
+    }
+
+	public UserProfile(String email, String encryptedPassword, String firstName, String lastName) {
+		super();
 
 		this.email = email;
 		this.encryptedPassword = encryptedPassword;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		
-		this.role = Role.CUSTOMER;
 
-		this.enabled = false;
 		this.created = new Date();
-	}
-	
-	public UserProfile(String email, String encryptedPassword,
-			String firstName, String lastName, Role role) {
 
-		this.email = email;
-		this.encryptedPassword = encryptedPassword;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		
-		this.role = role;
-
-		this.enabled = false;
-		this.created = new Date();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getEncryptedPassword() {
-		return encryptedPassword;
-	}
-
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getOrganization() {
-		return organization;
-	}
-
-	public void setOrganization(String organization) {
-		this.organization = organization;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getRegion() {
-		return region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getPostalAddress() {
-		return postalAddress;
-	}
-
-	public void setPostalAddress(String postalAddress) {
-		this.postalAddress = postalAddress;
-	}
-
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	public Date getModified() {
-		return modified;
-	}
-
-	public void setModified(Date modified) {
-		this.modified = modified;
-	}
-
-	public Date getLastAccess() {
-		return lastAccess;
-	}
-
-	public void setLastAccess(Date lastAccess) {
-		this.lastAccess = lastAccess;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public long getVersion() {
-		return version;
-	}
-
-	public void setVersion(long version) {
-		this.version = version;
-	}
-
-	@Override
-	public String toString() {
-		return "UserProfile [id=" + id + ", email=" + email + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", organization="
-				+ organization + ", created=" + created + "]";
 	}
 
 }
