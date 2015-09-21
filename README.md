@@ -11,8 +11,10 @@ required 'Java 8 and Maven 3.3'
 Run
 ---
 
+```
 $ mvn spring-boot:run
-$ curl -H http://localhost:8080
+$ curl -i -H "Accept:application/json" http://localhost:8080
+```
 
 License
 -------
